@@ -1,0 +1,140 @@
+<div class="container text-center"*ngIf="!OpenRegisterPage">
+  <div class="pen-title" >
+  <h1>Welcome to our Rental website, please sing in</h1><span><i class='fa fa-paint-brush'></i> + <i class='fa fa-code'></i><a href='http://andytran.me'></a></span>
+</div>
+<div class="module form-module">
+  <div class="toggle"><i class="fa fa-times fa-pencil"></i>
+    <div class="tooltip">Click Me</div>
+  </div>
+  <div class="form">
+    <h2>Login to your account</h2>
+    <form>
+      <input [(ngModel)]="Username" Stype="text" [ngModelOptions]="{standalone: true}" placeholder="Username"/>
+      <input [(ngModel)]="UserPassword" [ngModelOptions]="{standalone: true}" type="password" placeholder="Password"/>
+      <button (click)="LogIn()">Login</button>
+      <button id="RegisterBtn"(click)="MoveToRegister()">Create an acounte</button>
+      <h2>{{Message}}</h2>
+      <h2 *ngIf="MyLocalUserManager.SingleUser">welcome{{MyLocalUserManager.SingleUser.FullName}}</h2>
+    </form>
+  </div>
+  </div>
+  </div>
+  
+
+<div class="container" *ngIf="OpenRegisterPage">
+
+    <form class="well form-horizontal">
+<fieldset>
+
+<!-- Form Name -->
+<legend>Register Today!</legend>
+
+<!-- Text input-->
+
+<div class="form-group">
+  <label class="col-md-4 control-label">Full name</label>  
+  <div class="col-md-4 inputGroupContainer">
+  <div class="input-group">
+  <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+  <input  name="first_name" placeholder="full  Name" class="form-control"  type="text" [(ngModel)]="UserFullNameParam" [ngModelOptions]="{standalone: true}">
+    </div>
+  </div>
+</div>
+
+<!-- Text input-->
+       <div class="form-group">
+  <label class="col-md-4 control-label">ID</label>  
+    <div class="col-md-4 inputGroupContainer">
+    <div class="input-group">
+        <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+  <input  placeholder="ID number" class="form-control"  type="text" [(ngModel)]="UserIdNumberParam" [ngModelOptions]="{standalone: true}">
+    </div>
+  </div>
+</div>
+
+
+<!-- Text input-->
+<div class="form-group">
+  <label class="col-md-4 control-label">Username</label>  
+    <div class="col-md-4 inputGroupContainer">
+    <div class="input-group">
+        <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+  <input name="phone" placeholder="AAA1233" class="form-control" type="text" [(ngModel)]="UserNameParam" [ngModelOptions]="{standalone: true}">
+    </div>
+  </div>
+</div>
+
+<!-- Text input-->
+      
+<div class="form-group">
+  <label class="col-md-4 control-label">Password</label>  
+    <div class="col-md-4 inputGroupContainer">
+    <div class="input-group">
+        <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+  <input  placeholder="ABC123" class="form-control" type="password" [(ngModel)]="UserPasswordParam" [ngModelOptions]="{standalone: true}">
+    </div>
+  </div>
+</div>
+
+<!-- Text input-->
+ 
+<div class="form-group">
+  <label class="col-md-4 control-label">Email</label>  
+    <div class="col-md-4 inputGroupContainer">
+    <div class="input-group">
+        <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
+  <input  placeholder="AAA123@gmail.com" class="form-control"  type="text" [(ngModel)]="UserEmailParam" [ngModelOptions]="{standalone: true}">
+    </div>
+  </div>
+</div>
+
+ <div class="form-group">
+                        <label class="col-md-4 control-label">Gender</label>
+                        <div class="col-md-4">
+                            
+                            <div *ngFor="let option of UserGenderOption ">
+                                <input type="radio" value="{{option}}"name="Option"(change)="RadioChangeHanndler($event)">
+                                <i>{{option}}</i>
+                              </div>
+                        </div>
+</div>
+
+
+<div class="form-group">
+    <label class="col-md-4 control-label">Birth date(optional)</label>  
+      <div class="col-md-4 inputGroupContainer">
+      <div class="input-group">
+          <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+    <input   class="form-control" type="date" [(ngModel)]="UserBirthDateParam" [ngModelOptions]="{standalone: true}">
+      </div>
+    </div>
+  </div>
+
+  
+
+  <div class="form-group">
+      <label class="col-md-4 control-label">Uplode img(optional)</label>          
+      <div>
+          <input type="file" #Image accept="image/*" (change)="handleFileInput($event.target.files)">
+          <img *ngIf="imageUrl" [src]="imageUrl" style="width:250px;height:200px;display:block;">
+      </div>
+
+    </div>
+  
+
+<!-- Button -->
+<div class="form-group">
+  <label class="col-md-4 control-label"></label>
+  <div class="col-md-4">
+    <button type="submit"(click)="SubmitNewUser()" class="btn btn-warning" >Register <span class="glyphicon glyphicon-send"></span></button>
+  </div>
+</div>
+
+<h1 *ngIf="DidRegisterWorked">{{DidRegisterWorked}}</h1>
+<button (click)="BackToLogIn()">Back TO log in </button>
+</fieldset>
+</form>
+
+</div>
+
+  

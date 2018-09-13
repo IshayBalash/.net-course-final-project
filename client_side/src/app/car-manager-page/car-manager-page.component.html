@@ -1,0 +1,138 @@
+
+<!--table section-->
+<div *ngIf="(ShowCarTable)&&(LocalCarManager.AllCars)"class="container text-center">
+  <h1>All Cars </h1>
+  <table class="responstable">
+    <tr>
+      <th data-th="Driver details"><span>Car License Number</span></th>
+      <th>Manufacturer</th>
+      <th>Model</th>
+      <th>CarStatus</th>
+      <th>Car Kilometer</th>
+      <th>car branch Adress</th>
+      <th>car img</th>
+      <th>press to edit</th>
+      <th>press to delete</th>
+    </tr>
+    <tr *ngFor="let i of LocalCarManager.AllCars">
+      <td>{{i.CarlicenseNumber}}</td>
+      <td>{{i.CarType.Manufacturer}}</td>
+      <td>{{i.CarType.Model}}</td>
+      <td *ngIf="(i.CarStatus)">in use</td>
+      <td *ngIf="(!i.CarStatus)">out of order</td>
+      <td>{{i.CarKilometer}}</td>
+      <td>{{i.CarLocation.Adress}}</td>
+      <td><img src="http://localhost:54743/CarsImges/{{i.CarImg}}"></td>
+      <td> 
+        <button (click)="OpenEditSection(i)">Edit Car </button>
+      </td>
+      <td>
+          <button type="button" (click)="DeleteCar(i)" confirm-if="checked" confirm="Are you sure?">Delete Car </button>
+      </td>
+    </tr>     
+  </table>
+  <button (click)="OpenAddSection()">Add Car </button>
+  <h1 *ngIf=(DeleteMessage)>{{DeleteMessage}}</h1>
+  <button *ngIf="(DeleteMessage)" (click)="BackToTable()">Refresh the table</button>
+</div>
+
+
+<!--Add car section-->
+<div class="container" *ngIf="(ShwoAddSection)">
+
+  <form class="well form-horizontal">
+<fieldset>
+
+<!-- Form Name -->
+<legend *ngIf="(ShwoAddSection)&&(DistincBetweenAddAndEdit)" >Add New Car</legend>
+<legend *ngIf="(ShwoAddSection)&&(!DistincBetweenAddAndEdit)" >Edit car:  {{LocalCarManager.SingleCar.CarlicenseNumber}}- enter only the value you wish to change</legend>
+<!-- Text input-->
+
+<div class="form-group">
+<label class="col-md-4 control-label">Car licence number</label>  
+<div class="col-md-4 inputGroupContainer">
+<div class="input-group">
+<span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+<input  name="first_name" placeholder="licence number" class="form-control"  type="text" [(ngModel)]="NewCarLicenceNumber" [ngModelOptions]="{standalone: true}">
+  </div>
+</div>
+</div>
+
+<!-- Text input-->
+     <div class="form-group">
+<label class="col-md-4 control-label">Car Kilometer</label>  
+  <div class="col-md-4 inputGroupContainer">
+  <div class="input-group">
+      <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+<input  placeholder="car kilometer" class="form-control"  type="number" [(ngModel)]="NewCarKilometer" [ngModelOptions]="{standalone: true}">
+  </div>
+</div>
+</div>
+
+
+
+
+<div class="form-group">
+                      <label class="col-md-4 control-label">Car status</label>
+                      <div class="col-md-4">
+                          
+                          <div *ngFor="let option of RadioOptionsForCarStatus ">
+                              <input type="radio" value="{{option}}"name="Option"(change)="RadioChangeHandlerForCarStatus($event)">
+                              <i>{{option}}</i>
+                            </div>
+                      </div>
+</div>
+
+
+
+<div class="form-group">
+  <label class="col-md-4 control-label">Car type</label>
+  <div class="col-md-4">
+      <div>
+          <select [(ngModel)]="CarTypeModelAsString" [ngModelOptions]="{standalone: true}">
+            <option *ngFor="let i of LocalCarTypeManager.AllCarTypes"[value]="i.Model"> {{i.Model}} </option>
+          </select>
+        </div>
+  </div>
+</div>
+
+
+<div class="form-group">
+    <label class="col-md-4 control-label">Branche Name</label>
+    <div class="col-md-4">
+        <div>
+            <select [(ngModel)]="CarBrancheAsString" [ngModelOptions]="{standalone: true}">
+              <option *ngFor="let i of LocalBrancheManager.AllBranches"[value]="i.BranceName">{{i.BranceName}}</option>
+            </select>
+          </div>
+    </div>
+  </div>
+
+
+
+<div class="form-group" *ngIf="(ShwoAddSection)&&(DistincBetweenAddAndEdit)">
+    <label class="col-md-4 control-label">Uplode img(optional)</label>          
+    <div>
+        <input type="file" #Image accept="image/*" (change)="handleFileInput($event.target.files)">
+        <img *ngIf="imageUrl" [src]="imageUrl" style="width:250px;height:200px;display:block;">
+    </div>
+
+  </div>
+
+
+<!-- Button -->
+<div class="form-group">
+<label class="col-md-4 control-label"></label>
+<div class="col-md-4">
+  <button *ngIf="(ShwoAddSection)&&(DistincBetweenAddAndEdit)" type="submit"(click)="AddNewCar()" class="btn btn-warning" >Add New car <span class="glyphicon glyphicon-send"></span></button>
+  <button *ngIf="(ShwoAddSection)&&(!DistincBetweenAddAndEdit)" type="submit"(click)="EditCar()" class="btn btn-warning" >Edit car <span class="glyphicon glyphicon-send"></span></button>
+</div>
+</div>
+<h1 *ngIf="AddMessage">{{AddMessage}}</h1>
+<h1 *ngIf="EditMessage">{{EditMessage}}</h1>
+<button (click)="BackToTable()">Back To Table </button>
+</fieldset>
+</form>
+
+</div>
+

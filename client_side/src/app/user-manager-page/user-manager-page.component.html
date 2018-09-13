@@ -1,0 +1,181 @@
+
+<!--table section-->
+<div *ngIf="(ShwoUserTable)&&(LocalUserManager.AllUsers)"class="container text-center">
+    <h1>All Users</h1>
+    <table class="responstable">
+      <tr>
+        <th data-th="Driver details"><span>User name</span></th>
+        <th>User id</th>
+        <th>User name</th>
+        <th>User password</th>
+        <th>User email</th>
+        <th>User birth day</th>
+        <th>User gender</th>
+        <th>User UserAuthorization</th>
+        <th>User Img</th>
+        <th>Press to edit</th>
+        <th>press to delete</th>
+      </tr>
+      <tr *ngFor="let i of LocalUserManager.AllUsers">
+        <td>{{i.FullName}}</td>
+        <td>{{i.UserIdNumber}}</td>
+        <td>{{i.UserName}}</td>
+        <td>{{i.UserPassword}}</td>
+        <td>{{i.UserEmail}}</td>
+        <td *ngIf="i.UserBirthDate">{{i.UserBirthDate | date}}</td>
+        <td *ngIf="i.UserSex">male</td>
+        <td *ngIf="!i.UserSex">female</td>
+        <td>{{i.UserAuthorization}}</td>
+        <td *ngIf="i.UserImg"><img src="http://localhost:54743/UsersImages/{{i.UserImg}}"></td>
+        <td *ngIf="!i.UserImg">no pic givven</td>
+        <td *ngIf="(i.IsAutomatic)">Otomatic gear</td>
+        <td> 
+          <button (click)="OpenEditSections(i)">Edit User</button>
+        </td>
+        <td>
+            <button type="button" (click)="DeleteUser(i)" confirm-if="checked" confirm="Are you sure">Delete User</button>
+        </td>
+      </tr>     
+    </table>
+    <button (click)="OpenAddSection()">Add User</button>
+    <h1 *ngIf=(DeleteMessage)>{{DeleteMessage}}</h1>
+    <button *ngIf="(DeleteMessage)" (click)="BackToList()">Refresh the table</button>
+</div>
+
+
+
+
+
+
+<!--  Add User Section -->
+
+<div class="container" *ngIf="(ShwoAddSection)">
+
+    <form class="well form-horizontal">
+<fieldset>
+
+<!-- Form Name -->
+<legend *ngIf="(ShwoAddSection)&&(DistincBetweenAddAndEdit)" >Add new user</legend>
+<legend *ngIf="(ShwoAddSection)&&(!DistincBetweenAddAndEdit) && (UserForEdit)" >Edit {{UserForEdit.UserName}}- enter only the value you wish to change</legend>
+<!-- Text input-->
+
+<div class="form-group">
+  <label class="col-md-4 control-label">Full name</label>  
+  <div class="col-md-4 inputGroupContainer">
+  <div class="input-group">
+  <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+  <input  name="first_name" placeholder="full  Name" class="form-control"  type="text" [(ngModel)]="UserFullNameParam" [ngModelOptions]="{standalone: true}">
+    </div>
+  </div>
+</div>
+
+<!-- Text input-->
+       <div class="form-group">
+  <label class="col-md-4 control-label">ID</label>  
+    <div class="col-md-4 inputGroupContainer">
+    <div class="input-group">
+        <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+  <input  placeholder="ID number" class="form-control"  type="text" [(ngModel)]="UserIdNumberParam" [ngModelOptions]="{standalone: true}">
+    </div>
+  </div>
+</div>
+
+
+<!-- Text input-->
+<div class="form-group" *ngIf="(ShwoAddSection)&&(DistincBetweenAddAndEdit)">
+  <label class="col-md-4 control-label">Username</label>  
+    <div class="col-md-4 inputGroupContainer">
+    <div class="input-group">
+        <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+  <input name="phone" placeholder="AAA1233" class="form-control" type="text" [(ngModel)]="UserNameParam" [ngModelOptions]="{standalone: true}">
+    </div>
+  </div>
+</div>
+
+<!-- Text input-->
+      
+<div class="form-group">
+  <label class="col-md-4 control-label">Password</label>  
+    <div class="col-md-4 inputGroupContainer">
+    <div class="input-group">
+        <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+  <input  placeholder="ABC123" class="form-control" type="password" [(ngModel)]="UserPasswordParam" [ngModelOptions]="{standalone: true}">
+    </div>
+  </div>
+</div>
+
+<!-- Text input-->
+ 
+<div class="form-group">
+  <label class="col-md-4 control-label">Email</label>  
+    <div class="col-md-4 inputGroupContainer">
+    <div class="input-group">
+        <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
+  <input  placeholder="AAA123@gmail.com" class="form-control"  type="text" [(ngModel)]="UserEmailParam" [ngModelOptions]="{standalone: true}">
+    </div>
+  </div>
+</div>
+
+ <div class="form-group">
+                        <label class="col-md-4 control-label">Gender</label>
+                        <div class="col-md-4">
+                            
+                            <div *ngFor="let option of UserGenderOption ">
+                                <input type="radio" value="{{option}}"name="Option"(change)="RadioChangeHanndler($event)">
+                                <i>{{option}}</i>
+                              </div>
+                        </div>
+</div>
+
+
+<div class="form-group">
+    <label class="col-md-4 control-label">Authorization</label>
+    <div class="col-md-4">
+        
+        <div *ngFor="let option of UserAuthorizationOptions">
+            <input type="radio" value="{{option}}"name="Option"(change)="RadioChangeHandlerForAuthorization($event)">
+            <i>{{option}}</i>
+          </div>
+    </div>
+</div>
+
+
+
+
+<div class="form-group">
+    <label class="col-md-4 control-label">Birth date(optional)</label>  
+      <div class="col-md-4 inputGroupContainer">
+      <div class="input-group">
+          <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+    <input   class="form-control" type="date" [(ngModel)]="UserBirthDateParam" [ngModelOptions]="{standalone: true}">
+      </div>
+    </div>
+  </div>
+
+  
+
+  <div class="form-group" *ngIf="(ShwoAddSection)&&(DistincBetweenAddAndEdit)">
+      <label class="col-md-4 control-label">Uplode img(optional)</label>          
+      <div>
+          <input type="file" #Image accept="image/*" (change)="handleFileInput($event.target.files)">
+          <img *ngIf="imageUrl" [src]="imageUrl" style="width:250px;height:200px;display:block;">
+      </div>
+
+    </div>
+  
+
+<!-- Button -->
+<div class="form-group">
+  <label class="col-md-4 control-label"></label>
+  <div class="col-md-4">
+    <button *ngIf="(ShwoAddSection)&&(DistincBetweenAddAndEdit)" type="submit"(click)="AddNewUser()" class="btn btn-warning" >Add New User <span class="glyphicon glyphicon-send"></span></button>
+    <button *ngIf="(ShwoAddSection)&&(!DistincBetweenAddAndEdit)" type="submit"(click)="EditUser()" class="btn btn-warning" >Edit User <span class="glyphicon glyphicon-send"></span></button>
+  </div>
+</div>
+<h1 *ngIf="AddMessage">{{AddMessage}}</h1>
+<h1 *ngIf="EditMessage">{{EditMessage}}</h1>
+<button (click)="BackToList()">Back To Table </button>
+</fieldset>
+</form>
+
+</div>

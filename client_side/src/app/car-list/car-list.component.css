@@ -1,0 +1,10 @@
+.container {
+    padding: 80px 120px;
+}
+.carinfo{
+    font-family: "Times New Roman", Times, serif;
+}
+#serach_div{
+    position: relative;
+    right:60%;
+}

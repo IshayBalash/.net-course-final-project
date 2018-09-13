@@ -1,0 +1,138 @@
+
+<!--table section-->
+<div *ngIf="(ShowCarTypeTable)&&(LocalCarTypeManager.AllCarTypes)"class="container text-center">
+    <h1>All Car types </h1>
+    <table class="responstable">
+      <tr>
+        <th data-th="Driver details"><span>Manufacturer</span></th>
+        <th>Model</th>
+        <th>Year</th>
+        <th>gear</th>
+        <th>Cost Per Day</th>
+        <th>Fine Price</th>
+        <th>press to edit</th>
+        <th>press to delete</th>
+      </tr>
+      <tr *ngFor="let i of LocalCarTypeManager.AllCarTypes">
+        <td>{{i.Manufacturer}}</td>
+        <td>{{i.Model}}</td>
+        <td>{{i.Year}}</td>
+        <td *ngIf="(i.IsAutomatic)">Otomatic gear</td>
+        <td *ngIf="(!i.IsAutomatic)">Manual gear</td>
+        <td>{{i.CostPerDay}}</td>
+        <td>{{i.FinePrice}}</td>
+        <td> 
+          <button (click)="OpenEditSection(i)">Edit Car type</button>
+        </td>
+        <td>
+            <button type="button" (click)="DeleteCarType(i)" confirm-if="checked" confirm="Are you sure">Delete Car Type</button>
+        </td>
+      </tr>     
+    </table>
+    <button (click)="OpenAddSection()">Add Car Type</button>
+    <h1 *ngIf=(DeleteMessage)>{{DeleteMessage}}</h1>
+    <button *ngIf="(DeleteMessage)" (click)="BackToTable()">Refresh the table</button>
+</div>
+
+
+<!--  Add User Section -->
+
+<div class="container" *ngIf="ShwoAddSection">
+
+    <form class="well form-horizontal">
+<fieldset>
+
+<!-- Form Name -->
+<legend *ngIf="(ShwoAddSection)&&(DistincBetweenAddAndEdit)">Add new car type</legend>
+<legend *ngIf="(ShwoAddSection)&&(!DistincBetweenAddAndEdit)">Edit cartype model-{{LocalCarTypeManager.SingleCarType.Model}- enter only the value you wish to change</legend>
+<!-- Text input-->
+
+<div class="form-group">
+  <label class="col-md-4 control-label">Manufacturer</label>  
+  <div class="col-md-4 inputGroupContainer">
+  <div class="input-group">
+  <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+  <input  name="first_name" placeholder="Manufacturer" class="form-control"  type="text" [(ngModel)]="NewCarTypeManufacturer" [ngModelOptions]="{standalone: true}">
+    </div>
+  </div>
+</div>
+
+<!-- Text input-->
+       <div class="form-group">
+  <label class="col-md-4 control-label">Model</label>  
+    <div class="col-md-4 inputGroupContainer">
+    <div class="input-group">
+        <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+  <input  placeholder="Model" class="form-control"  type="text" [(ngModel)]="NewCarTypeModel" [ngModelOptions]="{standalone: true}">
+    </div>
+  </div>
+</div>
+
+
+<!-- Text input-->
+<div class="form-group" *ngIf="(ShwoAddSection)&&(DistincBetweenAddAndEdit)">
+  <label class="col-md-4 control-label">Year</label>  
+    <div class="col-md-4 inputGroupContainer">
+    <div class="input-group">
+        <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+  <input name="phone" placeholder="0000" class="form-control" type="number" [(ngModel)]="NewCarTypeYear" [ngModelOptions]="{standalone: true}">
+    </div>
+  </div>
+</div>
+
+
+ <div class="form-group">
+                        <label class="col-md-4 control-label">Gear</label>
+                        <div class="col-md-4">
+                            
+                            <div *ngFor="let option of GearOptions">
+                                <input type="radio" value="{{option}}"name="Option"(change)="GearChangeHanndler($event)">
+                                <i>{{option}}</i>
+                              </div>
+                        </div>
+</div>
+
+
+<div class="form-group" *ngIf="(ShwoAddSection)&&(DistincBetweenAddAndEdit)">
+    <label class="col-md-4 control-label">Price Per Day</label>  
+      <div class="col-md-4 inputGroupContainer">
+      <div class="input-group">
+          <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+    <input name="phone" placeholder="00000" class="form-control" type="number" [(ngModel)]="NewCarTypePricePerDay" [ngModelOptions]="{standalone: true}">
+      </div>
+    </div>
+  </div>
+  
+
+  <div class="form-group" *ngIf="(ShwoAddSection)&&(DistincBetweenAddAndEdit)">
+      <label class="col-md-4 control-label">Fine Price</label>  
+        <div class="col-md-4 inputGroupContainer">
+        <div class="input-group">
+            <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+      <input name="phone" placeholder="00000" class="form-control" type="number" [(ngModel)]="NewCarTypeFinePrice" [ngModelOptions]="{standalone: true}">
+        </div>
+      </div>
+    </div>
+    
+
+<!-- Button -->
+<div class="form-group">
+  <label class="col-md-4 control-label"></label>
+  <div class="col-md-4">
+    <button *ngIf="(ShwoAddSection)&&(DistincBetweenAddAndEdit)" type="submit"(click)="AddNewCarType()" class="btn btn-warning" >Add New car type <span class="glyphicon glyphicon-send"></span></button>
+    <button *ngIf="(ShwoAddSection)&&(!DistincBetweenAddAndEdit)" type="submit"(click)="EditCarType()" class="btn btn-warning" >Edit CarType <span class="glyphicon glyphicon-send"></span></button>
+  </div>
+</div>
+<h1 *ngIf="AddMessage">{{AddMessage}}</h1>
+<h1 *ngIf="EditMessage">{{EditMessage}}</h1>
+<button (click)="BackToTable()">Back To Table </button>
+</fieldset>
+</form>
+
+</div>
+
+
+
+
+
+

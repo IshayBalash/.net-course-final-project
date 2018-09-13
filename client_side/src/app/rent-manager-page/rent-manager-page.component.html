@@ -1,0 +1,85 @@
+<div *ngIf="(ShowRentList)&&(LocalRentManager.AllRents) && LocalRentManager.AllRents.length>0" class="container text-center">
+    <h1>All Rents </h1>
+    <table class="responstable">
+      <tr>
+        <th>RentId</th>
+        <th data-th="Driver details"><span>CarlicenseNumber</span></th>
+        <th>UserFullName</th>
+        <th>start date</th>
+        <th>end date</th>
+        <th>return date</th>
+        <th>press to Edit</th>
+        <th>press to delete</th>
+      </tr>
+      <tr *ngFor="let i of LocalRentManager.AllRents">
+        <td>{{i.RentID}}</td>
+        <td>{{i.CarInfo.CarlicenseNumber}}</td>
+        <td>{{i.UserInfo.FullName}}</td>
+        <td>{{i.StartDate | date}}</td>
+        <td>{{i.EndDate | date}}</td>
+        <td *ngIf='i.ReturnDate.toString()!="2100-01-01T00:00:00"' >{{i.ReturnDate | date}}</td>
+        <td *ngIf='i.ReturnDate.toString()=="2100-01-01T00:00:00"' >Car was not returned</td>
+        <td> 
+          <button (click)="OpenRentForEdit(i)">Edit Rent</button>
+        </td>
+        <td>
+            <button type="button" (click)="DeleteRent(i)" confirm-if="checked" confirm="Are you sure">Delete Rent</button>
+        </td>
+      </tr>     
+    </table>
+    <h1 *ngIf=(DeleteMessage)>{{DeleteMessage}}</h1>
+</div>
+
+<div *ngIf="(ShowRentList)&&(LocalRentManager.AllRents) && LocalRentManager.AllRents.length==0" class="container text-center">
+  <h1>there are No Rents</h1>
+</div>
+
+
+
+<div *ngIf="(ShowEditSection)" class="container text-center">
+    <table class="responstable">
+        <tr>
+          <th>RentId</th>
+          <th data-th="Driver details"><span>CarlicenseNumber</span></th>
+          <th>UserFullName</th>
+          <th>start date</th>
+          <th>end date</th>
+          <th>return date</th>
+        </tr>
+        <tr>
+          <td>{{LocalRentManager.SingleRent.RentID}}</td>
+          <td>{{LocalRentManager.SingleRent.CarInfo.CarlicenseNumber}}</td>
+          <td>{{LocalRentManager.SingleRent.UserInfo.FullName}}</td>
+          <td>{{LocalRentManager.SingleRent.StartDate | date}}</td>
+          <td>{{LocalRentManager.SingleRent.EndDate | date}}</td>
+          <td>{{LocalRentManager.SingleRent.ReturnDate | date}}</td>     
+        </tr>  
+    </table>
+    <br>
+    <div>
+    <label>Choose User</label>
+    <select [(ngModel)]="username">
+        <option *ngFor ="let i of LocalUserManager.AllUsers" [value]="i.FullName">{{i.FullName}}</option>
+    </select>
+    <label>Choose Car</label>
+    <select [(ngModel)]="carlicencnumber">
+        <option *ngFor ="let i of LocalCarsManager.AllCars" [value]="i.CarlicenseNumber">{{i.CarlicenseNumber}}</option>
+    </select>
+    </div>
+    <button (click)="ShowDateOption()">Choose dates</button>
+    <button (click)="BackToList()">Back to list</button>
+   
+   <div *ngIf="(ShowDateOptionParam)">
+  <label>Start Date</label>
+  <input [(ngModel)]="NewStartDate" type="date" name="dateofbirth" id="dateofbirth">
+  <label>End Date</label>
+  <input [(ngModel)]="NewEndDate" type="date" name="dateofbirth" id="dateofbirth">
+  <label>Return date</label>
+  <input [(ngModel)]="NewReturnDate" type="date" name="dateofbirth" id="dateofbirth">
+    <br>
+    <button (click)="SubmitEdit()">Submit</button>
+    <h1 *ngIf="DidEditWork">{{DidEditWork}}</h1>
+    <button (click)="BackToList()">Back To Table</button>
+  </div>
+</div>
+ 

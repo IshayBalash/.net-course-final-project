@@ -1,0 +1,84 @@
+<div class="container text-center">
+  <div id="serach_div">
+    <legend>spesific search</legend>
+    <select [(ngModel)]="OptionSelected" (change)="SetSearchParameters()">
+      <option *ngFor="let i of SearchAcoordingTo">
+        {{i}}
+      </option>
+    </select>
+    <div *ngIf="ShwoGearOptions">
+        <div *ngFor="let option of GearOptions">
+            <input type="radio" value="{{option}}"name="Option"(change)="GearHandler($event)">
+            <i>{{option}}</i>
+          </div>
+    </div>
+  
+    <div *ngIf="ShowYearOption">
+        <select [(ngModel)]="ChosenYear">
+          <option *ngFor="let i of YearsAsArry">{{i}}</option>
+        </select>
+      </div>
+
+    <div *ngIf="ShwoManufacturerOption">
+        <select [(ngModel)]="chosenManufacture">
+          <option *ngFor="let i of ManufacturerAsArry">{{i}}</option>
+        </select>
+    </div>
+
+
+    <button (click)="SearchForCars()">click</button>
+  </div>
+
+  <!--full car list-->
+  <div class="row" *ngIf="ShowAllCars">
+    <h1>full list</h1>
+    <div class="col-sm-4" *ngFor="let i of LocalCarsManager.AllCars,let j=index">
+      <div *ngIf="(i.CarStatus)">
+      <p class="text-center"><strong>{{i.CarType.Manufacturer}}</strong></p>
+      <p class="text-center"><strong>{{i.CarType.Model}}</strong></p>
+      <br>
+      <a href="#demo{{j}}" data-toggle="collapse">
+        <img src="http://localhost:54743/CarsImges/{{i.CarImg}}" class="img-circle person" alt="Random Name">
+        <div id="demo{{j}}" class="collapse">
+          <h2 class="carinfo">{{i.CarType.Year}}</h2>
+          <h2 class="carinfo">{{i.CarlicenseNumber}}</h2>
+          <h2 class="carinfo" *ngIf="i.CarType.IsAutomatic">otomatic</h2>
+          <h2 class="carinfo" *ngIf="!i.CarType.IsAutomatic" >manual</h2>
+          <a *ngIf="LocalUserManager.SingleUser" (click)="TransferCarToService(i)"routerLink="/Rents">to rent page</a>
+          <a *ngIf="!LocalUserManager.SingleUser" routerLink="/logIn">to rent page please sign up</a>
+        </div>
+      </a>
+    </div> 
+    </div>
+    </div>
+
+  <!--search car list-->
+    <div class="row" *ngIf="!ShowAllCars">
+      <h1>spesific list</h1>
+        <div class="col-sm-4" *ngFor="let i of SearchCarsArry,let j=index">
+          <div>
+          <p class="text-center"><strong>{{i.CarType.Manufacturer}}</strong></p>
+          <p class="text-center"><strong>{{i.CarType.Model}}</strong></p>
+          <br>
+          <a href="#demo{{j}}" data-toggle="collapse">
+            <img src="http://localhost:54743/CarsImges/{{i.CarImg}}" class="img-circle person" alt="Random Name">
+            <div id="demo{{j}}" class="collapse">
+              <h2 class="carinfo">{{i.CarType.Year}}</h2>
+              <h2 class="carinfo">{{i.CarlicenseNumber}}</h2>
+              <h2 class="carinfo" *ngIf="i.CarType.IsAutomatic">otomatic</h2>
+              <h2 class="carinfo" *ngIf="!i.CarType.IsAutomatic" >manual</h2>
+              <a *ngIf="LocalUserManager.SingleUser" (click)="TransferCarToService(i)"routerLink="/Rents">to rent page</a>
+              <a *ngIf="!LocalUserManager.SingleUser" routerLink="/logIn">to rent page please sign up</a>
+            </div>
+          </a>
+        </div> 
+        </div>
+
+
+</div>
+
+
+
+
+
+

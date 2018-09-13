@@ -1,0 +1,27 @@
+<div *ngIf="LocalRentService.SpeseficRent.length>0" class="container text-center">
+    <h1>Rents info  for <span>{{LocalUserManager.SingleUser.FullName}}</span></h1>
+    <table class="responstable">
+      <tr>
+        <th data-th="Driver details"><span>Car Manaufactuer</span></th>
+        <th>Car Model</th>
+        <th>Car licence number</th>
+        <th>start date</th>
+        <th>End date</th>
+        <th>Return date</th>
+      </tr>
+      <tr *ngFor="let i of LocalRentService.SpeseficRent">
+        <td>{{i.CarInfo.CarType.Manufacturer}}</td>
+        <td>{{i.CarInfo.CarType.Model}}</td>
+        <td>{{i.CarInfo.CarlicenseNumber}}</td>
+        <td>{{i.StartDate | date}}</td>
+        <td>{{i.EndDate | date}}</td>
+        <td *ngIf='i.ReturnDate.toString()=="2100-01-01T00:00:00"'>car was not returned</td>
+        <td *ngIf='i.ReturnDate.toString()!="2100-01-01T00:00:00"'>{{i.ReturnDate | date}}</td>
+      </tr>     
+    </table>
+</div>
+
+
+<div *ngIf="LocalRentService.SpeseficRent.length==0" class="container text-center">
+  <h1>You dont have any Rents on your name yet</h1>
+</div>

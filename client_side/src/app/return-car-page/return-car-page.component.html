@@ -1,0 +1,93 @@
+
+<!--All rents-->
+<div *ngIf="ShwoAllRents && LocalRentManager.AllRents.length!=0" class="container text-center">
+  <div class="SearchOption">
+    <h3> search acording to user</h3>
+    <select [(ngModel)]="selectedUserName">
+      <option *ngFor="let i of LocalUserManager.AllUsers">{{i.UserName}}</option>
+    </select>
+    <button (click)="GetAllRentsForUser()">Search</button>
+  </div>  
+  <div>
+  <h1>All rents </h1>
+    <table class="responstable">
+      <tr>
+        <th>RentId</th>
+        <th data-th="Driver details"><span>CarlicenseNumber</span></th>
+        <th>UserFullName</th>
+        <th>start date</th>
+        <th>end date</th>
+        <th>return date</th>
+      </tr>
+      <tr *ngFor="let i of LocalRentManager.AllRents">
+        <td>{{i.RentID}}</td>
+        <td>{{i.CarInfo.CarlicenseNumber}}</td>
+        <td>{{i.UserInfo.FullName}}</td>
+        <td>{{i.StartDate | date:'fullDate'}}</td>
+        <td>{{i.EndDate | date:'fullDate'}}</td>
+        <td *ngIf='i.ReturnDate.toString()!="2100-01-01T00:00:00"'>{{i.ReturnDate | date:'fullDate'}}</td>
+        <td *ngIf='i.ReturnDate.toString()=="2100-01-01T00:00:00"'><button (click)="Rentsummary(i)">Rent summary</button></td>
+      </tr>     
+    </table>
+</div>
+</div>
+
+<div *ngIf="(ShwoAllRents) && LocalRentManager.AllRents.length==0" class="container text-center">
+    <h1>there are no Rents</h1>
+</div>
+
+<!--spesific user rents-->
+<div *ngIf="ShwoSpesificUserRents && UserRents.length!=0"  class="container text-center">
+    <h1>All rents for: {{selectedUserName}} </h1>
+    <table class="responstable">
+      <tr>
+        <th>RentId</th>
+        <th data-th="Driver details"><span>CarlicenseNumber</span></th>
+        <th>UserFullName</th>
+        <th>start date</th>
+        <th>end date</th>
+        <th>return date</th>
+      </tr>
+      <tr *ngFor="let i of UserRents">
+        <td>{{i.RentID}}</td>
+        <td>{{i.CarInfo.CarlicenseNumber}}</td>
+        <td>{{i.UserInfo.FullName}}</td>
+        <td>{{i.StartDate | date:'fullDate'}}</td>
+        <td>{{i.EndDate | date:'fullDate'}}</td>
+        <td *ngIf='i.ReturnDate.toString()!="2100-01-01T00:00:00"'>{{i.ReturnDate | date:'fullDate'}}</td>
+        <td *ngIf='i.ReturnDate.toString()=="2100-01-01T00:00:00"'><button (click)="Rentsummary(i)">Rent summary</button></td>
+      </tr>     
+    </table>
+    <button (click)="BackToRentList()">back to full table</button>
+</div>
+
+<div *ngIf="(ShwoSpesificUserRents) && UserRents.length==0" class="container text-center">
+    <h1>there are no Rents for {{selectedUserName}}</h1>
+    <button (click)="BackToRentList()">back to full table</button>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--spesific rent-->
+<div *ngIf="ShwoSpesificRentInfo" class="container text-center">
+  <h1>Rent Info</h1>
+  <h2>RentId:{{RentID}}</h2>
+  <h2>start date: {{startDate | date:'fullDate'}}</h2>
+  <h2>end date: {{endDate | date:'fullDate'}}</h2>
+  <h2>number of Rent days: {{DaysOfRent}}</h2>
+  <h2>number of delay: {{DaysOfDelay}}</h2>
+  <h2>total to pay: {{TotalNumToPay}}</h2>
+  <button (click)="CloseRent()">Return car</button>
+  <button (click)="openAllRents()"> back to list </button>
+  <h1 *ngIf="DidReturnWorks">{{DidReturnWorks}}</h1>
+</div>

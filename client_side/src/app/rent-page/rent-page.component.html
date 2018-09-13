@@ -1,0 +1,74 @@
+<div *ngIf="!ShowRentInfo" class="container text-center">
+<h1>Start Date</h1>
+<input [(ngModel)]="StartDate" type="date" name="dateofbirth" id="dateofbirth">
+<h1>End Date</h1>
+<input [(ngModel)]="EndDate" type="date" name="dateofbirth" id="dateofbirth">
+<br>
+<br>
+<button (click)="CalculateRent()"> Continue </button>
+</div>
+
+
+
+<div *ngIf="ShowRentInfo" class="container text-center">
+    <h1 class="order-title">Car rent store</h1>
+    <p class="order-text">this is your rent info.</p>
+  <!--  .order-info -->
+  <table class="order-details">
+    <tfoot>
+      <tr>
+        <td class="order-item-name">Total sum</td>
+        <td class="order-price">{{LocalCarsManager.SingleCar.CarType.CostPerDay*NumOfDays}}</td>
+      </tr>
+    </tfoot>
+    <tbody>
+      <tr>
+        <td class="order-item-name">Manafuct</td>
+        <td class="order-price">{{LocalCarsManager.SingleCar.CarType.Manufacturer}}</td>
+      </tr>
+      <tr>
+        <td class="order-item-name">Model</td>
+        <td class="order-price">{{LocalCarsManager.SingleCar.CarType.Model}}</td>
+      </tr>
+      <tr>
+        <td class="order-item-name">clinet name</td>
+        <td class="order-price">{{LocalUserManager.SingleUser.FullName}}</td>
+      </tr>
+      <tr>
+        <td class="order-item-name">ID</td>
+        <td class="order-price">{{LocalUserManager.SingleUser.UserIdNumber}}</td>
+      </tr>
+      <tr>
+        <td class="order-item-name">start date</td>
+        <td class="order-price">{{StartDate}}</td>
+      </tr>
+      <tr>
+        <td class="order-item-name">END date date</td>
+        <td class="order-price">{{EndDate}}</td>
+      </tr>
+      <tr>
+        <td class="order-item-name">Number of days</td>
+        <td class="order-price">{{NumOfDays}}</td>
+      </tr>
+      <tr>
+        <td class="order-item-name">Price per day</td>
+        <td class="order-price">{{LocalCarsManager.SingleCar.CarType.CostPerDay}}</td>
+      </tr>
+      <tr>
+        <td class="order-item-name">fine for renturn delay</td>
+        <td class="order-price">{{LocalCarsManager.SingleCar.CarType.FinePrice}}</td>
+      </tr>
+    </tbody>
+  </table>
+  <button (click)="AddNewRent()" id="Submit">Submit your order</button>
+  <h3 *ngIf="DidPostWorkForRent">{{DidPostWorkForRent}}</h3>
+</div>
+
+
+<div *ngIf="ShwoSoryMaasege" class="container text-center">
+       <h1>We are sorry</h1>
+       <h1>this car isnt avalble in the date you asked</h1>
+       <a routerLink="/CarList">to car list</a>
+       <button (click)="HideSoryMaasege()"> try a different date </button>
+</div>
+        
