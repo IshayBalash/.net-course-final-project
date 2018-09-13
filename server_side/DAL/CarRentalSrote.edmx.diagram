@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="2c7fe82610134e7aafc2f8fc530df746" Name="Diagram1">
+        <EntityTypeShape EntityType="CarRentalDbV2Model.BranchesTable" Width="1.5" PointX="0.75" PointY="1.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="CarRentalDbV2Model.CarsTable" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="CarRentalDbV2Model.CarsTypesTable" Width="1.5" PointX="0.75" PointY="5.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="CarRentalDbV2Model.RentTable" Width="1.5" PointX="5.25" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="CarRentalDbV2Model.sysdiagram" Width="1.5" PointX="5.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CarRentalDbV2Model.UsersTable" Width="1.5" PointX="3" PointY="4.875" IsExpanded="true" />
+        <AssociationConnector Association="CarRentalDbV2Model.FK_CarsTable_BranchesTable" ManuallyRouted="false" />
+        <AssociationConnector Association="CarRentalDbV2Model.FK_CarsTable_CarsTypesTable" ManuallyRouted="false" />
+        <AssociationConnector Association="CarRentalDbV2Model.FK_RentTable_CarsTable" ManuallyRouted="false" />
+        <AssociationConnector Association="CarRentalDbV2Model.FK_RentTable_UsersTable" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
