@@ -17,6 +17,12 @@
  4.Rents table-contain all the rents information and reference to eeach User and car.
  5.Branches table-contain all the branch inforamtiom. 
  
+ 
+ 
+ 
+ 
+ 
+ 
  ![Screenshot](DB_diagram.png)
  
 
