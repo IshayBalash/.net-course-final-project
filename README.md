@@ -1,11 +1,12 @@
 
-# c# project
+# .net Final Project-Car rental server & client side
 
 
 
-* The task of the project is to search for specific files in the user's computer and then updte a db with the search and the results files.
-* The project uses the n-tier module so it is divided into 4 different projects -4 dlls(UIL,BOL,DLL,BLL) and one console app.
-* The  DB used in this project is a mysql DB in an open connections format. 
+* The task of the project is to create a functinal car rental website contain both server and client side.
+* The  DB used in this project is a mysql DB.client
+* The server side was written in c# using an WebApi tecnology
+* The client side was writen in Angular 5.
 
 ***
 
