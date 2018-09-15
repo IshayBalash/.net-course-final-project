@@ -11,10 +11,10 @@
 ***
 ## Data Base
 **The DB contains 5 tables:**
- 1. **Users table:** contain all the users inforamtion.
- 2. Car Type table-contain all the car type information.
- 3. Car table-contain all the car information and and reference to each car type.
- 4. Rents table-contain all the rents information and reference to each User and car.
+ 1. **Users:** contain all the users inforamtion.
+ 2. **Car Type:** contain all the car type information.
+ 3. **Cars**: contain all the car information and and reference to each car type.
+ 4. **Rents table:** contain all the rents information and reference to each User and car.
  5. Branches table-contain all the branch inforamtiom. 
  
  
