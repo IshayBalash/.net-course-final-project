@@ -14,30 +14,29 @@
  1. Users table-contain all the user inforamtion.
  2. Car Type table-contain all the car type information.
  3. Car table-contain all the car information and and reference to each car type.
- 4. Rents table-contain all the rents information and reference to eeach User and car.
+ 4. Rents table-contain all the rents information and reference to each User and car.
  5. Branches table-contain all the branch inforamtiom. 
- 
- 
- 
- 
- 
  
  
  ![Screenshot](DB_diagram.png)
  
 
 
-## Data Base
-* Contains the Search files functions.
+## Server side
+* The server is dividd to 4 project using th N-tier model.
 
 ## BOL
-* Contains two classes. 
-1. The user search class.
-2. The file result class 
+* Contains 5 class classes. 
+1. User class.
+2. Car Type class.
+3. car class.
+4. Branch class
+5. Rent class.
 
 ## BLL
-* Contains the conmunication functions between the program and the DAL.
-* Activates the functions in the DAL according to a logical sequence of events.
+* Contains All the C.R.U.D(create, read, update and delete) function.
+* for each class in the Bol there is a crud manager in the Bll
+
 
 ## DAL
 * Contains the connections string to the local db.
