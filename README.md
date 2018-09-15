@@ -4,13 +4,21 @@
 
 
 * The task of the project is to create a functinal car rental website contain both server and client side.
-* The  DB used in this project is a mysql DB.client
-* The server side was written in c# using an WebApi tecnology
+* The  DB used in this project is a mysql microsoft DB
+* The server side was written in C# using an WebApi tecnology
 * The client side was writen in Angular 5.
 
 ***
+## Data Base
+* The DB contains 5 tables.
+ 1. Users table-contain all the user inforamtion.
+ 2. Car Type table-contain all the car type information.
+ 3.Car table-contain all the car information and and reference to each car type
+ 4.Rents table-contain all the rents information and reference to eeach User and car.
+ 5.Branches table-contain all the branch inforamtiom. 
 
-## UIL
+
+## Data Base
 * Contains the Search files functions.
 
 ## BOL
