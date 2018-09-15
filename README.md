@@ -64,9 +64,7 @@
 5. down loud all the angular project from the clirent side folder.
 6. in your project click -npn-install in order to set your angular project.
 7.After all the app is running(both server and client side).copy the server Url to the foolwing places:
- ** A.ballaalla
- ** B.balalal
- ** C.nanaja
+ 
 
 
 
