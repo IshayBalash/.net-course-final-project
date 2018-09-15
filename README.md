@@ -9,7 +9,7 @@
 * The client side was writen in Angular 5.
 
 ***
-## Data Base
+### Data Base
 * The DB contains 5 tables.
  1. Users table-contain all the user inforamtion.
  2. Car Type table-contain all the car type information.
@@ -22,10 +22,10 @@
  
 
 
-## Server side
+### Server side
 * The server is dividd into to 4 project using th N-tier model.
 
-## BOL
+### BOL
 * Contains 5 class classes. 
 1. User class.
 2. Car Type class.
@@ -33,16 +33,14 @@
 4. Branch class
 5. Rent class.
 
-## BLL
+### BLL
 * Contains All the C.R.U.D(create, read, update and delete) function.
 * for each class in the Bol there is a crud manager in the Bll
 
-
-## DAL
+### DAL
 * The Dal contains the entity framwork to the DB
 
-
-## UIL
+### UIL
 * The UIL is a Wep Api server that allow the client to communicate with the DB.
 *  The UIL contains 5 controllers that can be reach by http reqwests from the client side.
 * every time that a client is sending a http reqwest the UIL recive the reqwest and activate the right function in the BLL.
