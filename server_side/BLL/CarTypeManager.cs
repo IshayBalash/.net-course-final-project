@@ -10,6 +10,10 @@ namespace BLL
 {
    public static class CarTypeManager
     {
+        /// <summary>
+        /// gets all car types from the DB
+        /// </summary>
+        /// <returns>an arry of CarType model object</returns>
         public static CarTypeModel[] GetAllCarTypes()
         {
             try
@@ -34,7 +38,11 @@ namespace BLL
             }
         }
 
-
+        /// <summary>
+        /// get a spesific car type acording to a model from the client
+        /// </summary>
+        /// <param name="cartypeModle"></param>
+        /// <returns>a singl car type object</returns>
         public static CarTypeModel GetSpesificCartype(string cartypeModle)
         {
             try
@@ -69,7 +77,7 @@ namespace BLL
         /// <summary>
         /// delete a cartype from the db
         /// </summary>
-        /// <param name="cartypeModle">the cartype model number</param>
+        /// <param name="cartypeModle">the cartype model </param>
         /// <returns>true if the actions secseed false if it didnt</returns>
         public static bool DeleteCartype(string cartypeModle)
         {
@@ -94,11 +102,11 @@ namespace BLL
         }
 
         /// <summary>
-        /// edit a car info in the db
+        /// edit a car type info 
         /// </summary>
-        /// <param name="Carlicenceparam">the car licence number</param>
-        /// <param name="carparam">a car modle contains all the car data</param>
-        /// <returns>true if the actions sucseed false if it didnt</returns>
+        /// <param name="cartypeModle">the car type model from the user--string</param>
+        /// <param name="cartypeparam">an car type object contain all of the car type info</param>
+        /// <returns>true if the actions secseed false if it didnt</returns>
         public static bool EditCarType(string cartypeModle, CarTypeModel cartypeparam)
         {
             try
@@ -128,10 +136,10 @@ namespace BLL
         }
 
         /// <summary>
-        /// add a new car to the db
+        /// Add a new car type to the DB
         /// </summary>
-        /// <param name="NewCar">the car modle object</param>
-        /// <returns> true if the action sucseed false if it didnt</returns>
+        /// <param name="NewCartype">an car type object conatains all the car type data</param>
+        /// <returns>true if the actions secseed false if it didnt</returns>
         public static bool AddNewCartype(CarTypeModel NewCartype)
         {
             try

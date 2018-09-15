@@ -25,8 +25,6 @@ namespace UIL.Controllers
             //Upload Image
             var postedFile = httpRequest.Files["Image"];
             //Create custom filename
-            //imageName = new String(Path.GetFileNameWithoutExtension(postedFile.FileName).Take(10).ToArray()).Replace(" ", "-");
-            //imageName = imageName + DateTime.Now.ToString("yymmssfff") + Path.GetExtension(postedFile.FileName);
             imageName = ImgNameparam;
             var filePath = HttpContext.Current.Server.MapPath("~/CarsImges/" + imageName + ".jpg");
             postedFile.SaveAs(filePath);

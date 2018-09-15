@@ -5,18 +5,20 @@ import { CarsModel } from "../models/Cars.model";
 import {CarModel} from "../models/Car.model";
 import { UsersModel } from "../models/Users.model";
 import { UserService } from "./UserService.service";
+import { MainServerUr } from "./MainServerUrl.service";
 
 
 @Injectable()
 export class CarService{
-    Url="http://localhost:54743/api/Cars"
-    ImgUrl="http://localhost:54743/api/CarImg"//for the car img controler
-
+   private Url=`${this.ServerService.UrlServer}/Cars`
+   private ImgUrl=`${this.ServerService.UrlServer}/CarImg`//for the car img controler
+    
+    
     CarManager:CarsModel=new CarsModel();
     LocalUserManager:UsersModel={AllUsers:undefined,SingleUser:undefined}
     
        
-    constructor(private myHttpClient:HttpClient,private myUserService:UserService){
+    constructor(private myHttpClient:HttpClient,private myUserService:UserService,private ServerService:MainServerUr){
         this.LocalUserManager=myUserService.UserManager;
     }
 

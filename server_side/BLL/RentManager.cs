@@ -10,6 +10,10 @@ namespace BLL
 {
   public static  class RentManager
     {
+        /// <summary>
+        /// gets all the the renal object from the DB
+        /// </summary>
+        /// <returns>an arry of Rent models</returns>
         public static RentModel[] GetAllRents()
         {
             try
@@ -69,6 +73,11 @@ namespace BLL
         }
 
 
+        /// <summary>
+        /// get a spesific rent acording to a Id from the client
+        /// </summary>
+        /// <param name="RentId">the rent id-sent from the client</param>
+        /// <returns>A single Rent model object</returns>
         public static RentModel GetSpesificRent(int RentId)
         {
             try
@@ -133,6 +142,11 @@ namespace BLL
         }
 
 
+        /// <summary>
+        /// get a spesific rent acording to User name or a Car licence number
+        /// </summary>
+        /// <param name="StringParam">Or user name Or a Car licence number</param>
+        /// <returns>A single Rent model object</returns>
         public static RentModel[] GetSpesificRent(string StringParam)
         {
             try
@@ -140,8 +154,11 @@ namespace BLL
                 using (CarRentalDbV2Entities db = new CarRentalDbV2Entities())
                 {
                     RentTable[] dbrents = null;
+                    //Assum that the the StringParam is a car licence number
                     dbrents = db.RentTables.Where(a => a.CarsTable.CarlicenseNumber == StringParam).ToArray();
-                    dbrents=(dbrents.Length > 0)?dbrents:db.RentTables.Where(a => a.UsersTable.UserName == StringParam).ToArray();
+                    //if the arry lenght is 0, Assum that the the StringParam is a User name
+                    dbrents = (dbrents.Length > 0)?dbrents:db.RentTables.Where(a => a.UsersTable.UserName == StringParam).ToArray();
+                    //if after both options the arry is still null return null from the function
                     if (dbrents == null)
                     {
                         return null;
@@ -201,6 +218,11 @@ namespace BLL
         }
 
 
+        /// <summary>
+        /// delete a rent acording to a rent id sent by the client
+        /// </summary>
+        /// <param name="RentId">the rent id sent by the client</param>
+        /// <returns>true if the actions secseed false if it didnt</returns>
         public static bool DeleteRent(int RentId)
         {
             try
@@ -223,6 +245,13 @@ namespace BLL
             }
         }
 
+
+        /// <summary>
+        /// edit a rent acording to a rent id sent by the cient
+        /// </summary>
+        /// <param name="RentId">the rent id sent by the client</param>
+        /// <param name="rentparam">a rent model contains all the rent data</param>
+        /// <returns>true if the actions secseed false if it didnt</returns>
         public static bool EditRent(int RentId, RentModel rentparam)
         {
             try
@@ -251,7 +280,12 @@ namespace BLL
             }
         }
 
-        
+
+        /// <summary>
+        /// set a new rent to the DB
+        /// </summary>
+        /// <param name="newrentparam">a rent model object</param>
+        /// <returns>true if the actions secseed false if it didnt</returns>
         public static bool AddNewRent(RentModel newrentparam)
         {
             try

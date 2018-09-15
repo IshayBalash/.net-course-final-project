@@ -24,6 +24,7 @@ import { CarTypeManagerPageComponent } from './car-type-manager-page/car-type-ma
 import { UserManagerPageComponent } from './user-manager-page/user-manager-page.component';
 import { CarManagerPageComponent } from './car-manager-page/car-manager-page.component';
 import { BranceService } from './shared/services/BrancheService.service';
+import { MainServerUr } from './shared/services/MainServerUrl.service';
 
 
 const appRoutes:Routes=[
@@ -64,7 +65,7 @@ const appRoutes:Routes=[
     HttpClientModule,
     RouterModule.forRoot(appRoutes)
   ],
-  providers: [CarService,UserService,RentsService,CarTypeService,BranceService],
+  providers: [CarService,UserService,RentsService,CarTypeService,BranceService,MainServerUr],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

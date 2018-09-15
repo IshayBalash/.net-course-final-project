@@ -10,6 +10,7 @@ import { UserModel } from '../shared/models/User.model';
 })
 export class UserManagerPageComponent implements OnInit {
 
+  ServerImgLink="http://localhost:54743/UsersImages"
   LocalUserManager:UsersModel={AllUsers:undefined,SingleUser:undefined}
   UserForEdit:UserModel;//this parameter will get his value only if the admin press edit user
 

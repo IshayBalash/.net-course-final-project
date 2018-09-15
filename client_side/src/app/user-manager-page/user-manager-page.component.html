@@ -26,7 +26,7 @@
         <td *ngIf="i.UserSex">male</td>
         <td *ngIf="!i.UserSex">female</td>
         <td>{{i.UserAuthorization}}</td>
-        <td *ngIf="i.UserImg"><img src="http://localhost:54743/UsersImages/{{i.UserImg}}"></td>
+        <td *ngIf="i.UserImg"><img src="{{ServerImgLink}}/{{i.UserImg}}"></td>
         <td *ngIf="!i.UserImg">no pic givven</td>
         <td *ngIf="(i.IsAutomatic)">Otomatic gear</td>
         <td> 

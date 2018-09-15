@@ -5,16 +5,21 @@ import { CarTypseMode } from "../models/CarTypes.model";
 import { CarTypeModel } from "../models/CarType.model";
 import { UsersModel } from "../models/Users.model";
 import { UserService } from "./UserService.service";
+import { MainServerUr } from "./MainServerUrl.service";
 
 
 
 @Injectable()
 export class CarTypeService{
+    private Url=`${this.ServerService.UrlServer}/CarTypes`
+    
     CarTypeManager:CarTypseMode=new CarTypseMode();
     LocalUserManager:UsersModel={AllUsers:undefined,SingleUser:undefined};
-    Url="http://localhost:54743/api/CarTypes"
+    
+    
+    
 
-    constructor(private myHttpClient:HttpClient,private myUserService:UserService){
+    constructor(private myHttpClient:HttpClient,private myUserService:UserService,private ServerService:MainServerUr){
         this.LocalUserManager=myUserService.UserManager
     }
 

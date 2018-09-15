@@ -4,17 +4,20 @@ import { Observable } from "rxjs/Observable";
 
 import {UsersModel} from "../models/Users.model"
 import {UserModel} from "../models/User.model"
+import { MainServerUr } from "./MainServerUrl.service";
 
 
 
 
 @Injectable()
 export class UserService{
-    UserManager:UsersModel=new UsersModel();
-    Url="http://localhost:54743/api/Users"
-    ImgUrl="http://localhost:54743/api/UserImg"//for the user img controler
+  private Url=`${this.ServerService.UrlServer}/Users`
+  private ImgUrl=`${this.ServerService.UrlServer}/UserImg`
     
-    constructor(private myHttpClient:HttpClient){
+  UserManager:UsersModel=new UsersModel();
+    
+    
+    constructor(private myHttpClient:HttpClient,private ServerService:MainServerUr){
     }
 
     InitUsers():void{

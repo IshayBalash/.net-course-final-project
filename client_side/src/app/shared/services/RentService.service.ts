@@ -5,15 +5,20 @@ import { RentModel } from "../models/Rent.model";
 import { RentsModel } from "../models/Rents.model";
 import { UsersModel } from "../models/Users.model";
 import { UserService } from "./UserService.service";
+import { MainServerUr } from "./MainServerUrl.service";
 
 
 @Injectable()
 export class RentsService{
-        RentManager:RentsModel=new RentsModel();
-        LocalUserManager:UsersModel={AllUsers:undefined,SingleUser:undefined};
-        Url="http://localhost:54743/api/Rents"
+    private Url=`${this.ServerService.UrlServer}/Rents`
+   
+    RentManager:RentsModel=new RentsModel();
+    LocalUserManager:UsersModel={AllUsers:undefined,SingleUser:undefined};
+        
+       
+
     
-    constructor(private myHttpClient:HttpClient, private myUserService:UserService){
+    constructor(private myHttpClient:HttpClient, private myUserService:UserService,private ServerService:MainServerUr){
         this.LocalUserManager=myUserService.UserManager
     }
 

@@ -12,17 +12,21 @@ import { UserService } from '../shared/services/UserService.service';
 })
 export class CarListComponent implements OnInit {
 
+  ImgServerLink="http://localhost:54743/CarsImges"
+  
   LocalCarsManager:CarsModel={AllCars:undefined,SingleCar:undefined}
   LocalUserManager:UsersModel={AllUsers:undefined,SingleUser:undefined}
 
+  //an arry to hold only the wanted search cars
   SearchCarsArry:CarModel[]=[];
 
+  //after the User chose the wanted car transfer it to service.
   TransferCarToService(carparam:CarModel):void{
     this.LocalCarsManager.SingleCar=carparam;
   }
 
 
-  //Search Section
+  ////////Search Section///////////////////
 
   //boolean_parameter
   ShowAllCars:boolean

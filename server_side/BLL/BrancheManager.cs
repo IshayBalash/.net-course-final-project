@@ -12,6 +12,10 @@ namespace BLL
 
     public static class BrancheManager
     {
+        /// <summary>
+        /// gets all the branches in the DB
+        /// </summary>
+        /// <returns>an arry of branch models objects</returns>
         public static BrancheModel [] GetAllBranches()
         {
             try
@@ -35,6 +39,11 @@ namespace BLL
         }
 
 
+        /// <summary>
+        /// gets a spesific branch acording to a branch name
+        /// </summary>
+        /// <param name="BranchNameparam">a string from the client side</param>
+        /// <returns> a branch model object</returns>
         public static BrancheModel GetSpesificBranche(string BranchNameparam)
         {
             try

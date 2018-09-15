@@ -10,6 +10,10 @@ namespace BLL
 {
     public static class UserManager
     {
+        /// <summary>
+        /// get all user form the Db
+        /// </summary>
+        /// <returns>an arry of User model objects</returns>
         public static UserModel[] GetAllUsers()
         {
             try
@@ -40,6 +44,12 @@ namespace BLL
         }
 
 
+        /// <summary>
+        /// get a single user from the Db acording to User name and password
+        /// </summary>
+        /// <param name="Usernameparam"></param>
+        /// <param name="passwordparam"></param>
+        /// <returns>A single User model object</returns>
         public static UserModel GetSpesificUser(string Usernameparam,string passwordparam)
         {
             try
@@ -77,10 +87,10 @@ namespace BLL
 
 
         /// <summary>
-        /// delete a cartype from the db
+        /// delete a user from the DB
         /// </summary>
-        /// <param name="cartypeModle">the cartype model number</param>
-        /// <returns>true if the actions secseed false if it didnt</returns>
+        /// <param name="Usernameparam">A user name sent from the client</param>
+        /// <returns>returns>true if the actions secseed false if it didnt</returns>
         public static bool DeleteUser(string Usernameparam)
         {
             try
@@ -106,11 +116,11 @@ namespace BLL
 
 
         /// <summary>
-        /// edit a car info in the db
+        /// Edit a user Info
         /// </summary>
-        /// <param name="Carlicenceparam">the car licence number</param>
-        /// <param name="carparam">a car modle contains all the car data</param>
-        /// <returns>true if the actions sucseed false if it didnt</returns>
+        /// <param name="Usernameparam">the User name</param>
+        /// <param name="userparam">the User model object</param>
+        /// <returns>true if the actions secseed false if it didnt</returns>
         public static bool EditUser(string Usernameparam, UserModel userparam)
         {
             try
@@ -143,7 +153,12 @@ namespace BLL
         }
 
 
-         public static bool AddNewUser(UserModel NewUser)
+        /// <summary>
+        /// Add a new User to the DB
+        /// </summary>
+        /// <param name="NewUser">A User model object</param>
+        /// <returns>true if the actions secseed false if it didnt</returns>
+        public static bool AddNewUser(UserModel NewUser)
         {
             try
             {

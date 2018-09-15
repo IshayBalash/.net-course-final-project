@@ -59,7 +59,7 @@ namespace BLL
         /// <summary>
         /// get a single car model 
         /// </summary>
-        /// <param name="Carlicenceparam">the car licence number</param>
+        /// <param name="Carlicenceparam">the car licence number from the client</param>
         /// <returns>a car model object</returns>
         public static CarModel GetSpesificCar(string Carlicenceparam)
         {

@@ -7,6 +7,10 @@ using System.Threading.Tasks;
 
 namespace BOL
 {
+    /// <summary>
+    /// chek if the User id is valid using an IdValidation algoritam
+    /// return true or false
+    /// </summary>
     class UserIDValaidationClass: ValidationAttribute
     {
         public override bool IsValid(object param)
