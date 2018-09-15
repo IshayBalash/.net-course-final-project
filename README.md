@@ -9,7 +9,7 @@
 * The client side was writen in Angular 5.
 
 ***
-### Data Base
+## Data Base
 * The DB contains 5 tables.
  1. Users table-contain all the user inforamtion.
  2. Car Type table-contain all the car type information.
@@ -20,9 +20,9 @@
  
  ![Screenshot](DB_diagram.png)
  
+***
 
-
-### Server side
+## Server side
 * The server is dividd into to 4 project using th N-tier model.
 
 ### BOL
@@ -47,8 +47,8 @@
 * In order to maintain security in the DB each http respons function in each controller has it own Autoraiton that is determin using the
  BasicAuthFilter class in the filter folder. that way only spsfific users can modify the data in the DB.
  
-
-
+***
+## Client side
 
 
 
