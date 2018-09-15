@@ -1,5 +1,5 @@
 
-# .net Final Project-Car rental server & client side
+# .Net Final Project-Car rental server & client side
 
 
 
@@ -23,7 +23,7 @@
 
 
 ## Server side
-* The server is dividd to 4 project using th N-tier model.
+* The server is dividd into to 4 project using th N-tier model.
 
 ## BOL
 * Contains 5 class classes. 
@@ -39,15 +39,19 @@
 
 
 ## DAL
-* Contains the connections string to the local db.
-* Contains all of the CRUD functions (create, read, update, delete).
+* The Dal contains the entity framwork to the DB
 
 
-## Data base
-* The db contains 3 tables.
- 1. Search tables (search name, search path, search date).
- 2. The file results table(file name, file path).
- 3. A connections table between the search table and the file table (search id, result id).
+## UIL
+* The UIL is a Wep Api server that allow the client to communicate with the DB.
+*  The UIL contains 5 controllers that can be reach by http reqwests from the client side.
+* every time that a client is sending a http reqwest the UIL recive the reqwest and activate the right function in the BLL.
+* In order to maintain security in the DB each http respons function in each controller has it own Autoraiton that is determin using the
+ BasicAuthFilter class in the filter folder. that way only spsfific users can modify the data in the DB.
+ 
+
+
+
 
 
 
