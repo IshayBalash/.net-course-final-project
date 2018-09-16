@@ -61,8 +61,9 @@
 3. Run the server and copy the URL in the server page thar pops up.
 4. Download the angular project and install all dependencies using  ``` npm install ```.
 5. Run the angular app using ``` ng serve ```.
-5.After running the app(server and client), copy the server Url to the follow parameter:
- "src/app/shared/services/MainServerUrl.service.ts---" ```typescript public readonly UrlServer ```
+5.After running the app(server and client),go to file: "src/app/shared/services/MainServerUrl.service.ts
+and copy the server url to the '''UrlServer''' parameter.
+
 
  
 
