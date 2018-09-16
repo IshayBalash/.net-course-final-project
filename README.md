@@ -66,9 +66,9 @@
    and copy the server url to the ```UrlServer``` parameter.
 7. after all is set, you can start having fun with the app.
 
-**this repository was made by Ishay Balash and it is totly open for all.**
-**                     have a greate coding:)        **
 
+**have a greate coding:) **
+** ishay balash-ishay6411@gmail.com **
 
 
  
