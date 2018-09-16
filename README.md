@@ -59,7 +59,7 @@
 1. Open a new Query in your mysql server and copy all the data from the sqlscript file located in the reposotory.
 2. After the DB is set, Download the projects in the server side folder and start your own local server.
 3. Run the server and copy the URL in the server page thar pops up.
-4. Download the angular project and click -npn-install to set your angular project.
+4. Download the angular project and install all dependencies using  ```bash  npm install ```
 5.After running the app(server and client), copy the server Url to the following places:
  
 
