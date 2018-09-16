@@ -64,10 +64,10 @@
 5. Run the angular app using ``` ng serve ```.
 6. After running the app(server and client),go to file: "src/app/shared/services/MainServerUrl.service.ts
    and copy the server url to the ```UrlServer``` parameter.
-7. after all is set, you can start having fun with the app.
+7. After all is set, you can start having fun with the app.
 
 
-**have a greate coding :)**
+**have a happy coding :)**
 
 **Ishay Balash** 
 
