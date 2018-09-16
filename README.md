@@ -67,8 +67,8 @@
 7. after all is set, you can start having fun with the app.
 
 
-**have a greate coding :)**.
-**ishay balash-ishay6411@gmail.com **
+**have a greate coding :).**
+**ishay balash**
 
 
 
