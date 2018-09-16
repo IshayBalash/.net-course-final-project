@@ -57,13 +57,18 @@
 ## Insatalition the app
 * In order to activate the app in your own personal pc follow the next few steps:
 1. Open a new Query in your mysql server and copy all the data from the sqlscript file located in the reposotory.
-2. After the DB is set, Download the projects in the server side folder and start your own local server.
-4.in the uil.........
+2. After the DB is set, Download the projects in the server side.
+4. In the UIL project go to the app.config file, and update the connection sting attribu to your own sql server name.
 3. Run the server and copy the URL in the server page thar pops up.
 4. Download the angular project and install all dependencies using  ``` npm install ```.
 5. Run the angular app using ``` ng serve ```.
 6. After running the app(server and client),go to file: "src/app/shared/services/MainServerUrl.service.ts
    and copy the server url to the ```UrlServer``` parameter.
+7. after all is set, you can start having fun with the app.
+
+**this repository was made by Ishay Balash and it is totly open for all:**
+**                     have a greate coding:)        **
+
 
 
  
