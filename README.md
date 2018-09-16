@@ -50,7 +50,7 @@
 ## Client side
 * The clinet side is a Single-Page Application wirrten in Angular 5 using TyprScript language .
 * The app allows the user to view and modify data in the DB according to his level of authorization. 
-* All the http request functions are located in five services. Each component activates it own relavent functions.  
+* All the http request functions are located in five services. Each component activates it's own relavent functions.  
 
 
 ***
