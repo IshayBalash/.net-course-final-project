@@ -67,7 +67,7 @@
 7. After all is set, you can start having fun with the app.
 
 
-**have a happy coding :)**
+**Have a happy coding :)**
 
 **Ishay Balash** 
 
