@@ -55,13 +55,12 @@
 
 ***
 ## Insatalition the app
-* In order to activate the app in your own personal pc follw the next few steps:
+* In order to activate the app in your own personal pc follow the next few steps:
 1. Open a new Query in your mysql server and copy all the data from the sqlscript file located in the reposotory.
-2. After the DB is set, take all the project in the server side folders and create your oun local server.
-3. Download the projects in the server side folder and start your own local server.
-4. Run the server and copy the URL in the server page thar pops up.
-5. Download the angular project and click -npn-install to set your angular project.
-7.After running the app(server and client), copy the server Url to the following places:
+2. After the DB is set, Download the projects in the server side folder and start your own local server.
+3. Run the server and copy the URL in the server page thar pops up.
+4. Download the angular project and click -npn-install to set your angular project.
+5.After running the app(server and client), copy the server Url to the following places:
  
 
 
