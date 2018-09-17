@@ -3,7 +3,7 @@
 
 
 
-* The task of the project is to create a functinal car rental application that contains the server and the client side.
+* The goal of the project is to create a functinal car rental application that contains the server and the client side.
 * The  data base used in this project is a mysql microsoft DB.
 * The server is written in C# with WebAPI tecnology.
 * The client side was writen in Angular 5.
